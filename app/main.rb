@@ -22,20 +22,12 @@ def tick(args)
 end
 
 def tick_main_menu(args)
-  args.outputs.labels << {
-    x: args.grid.w / 2,
-    y: args.grid.top - 40,
-    text: "Dragon Riders Community Recipes",
-    size_enum: 4,
-    alignment_enum: 1,
-  }
-
   recipe_buttons = []
   recipe_buttons = RECIPES.map.with_index do |r, i|
     w = 320
     h = 240
     x = args.grid.left + 80 + (i * w)
-    y = args.grid.top - 100
+    y = args.grid.top - 200
     button = button(
       x: x, y: y, w: w, h: h,
       key: r[:key], title: r[:name], desc: r[:desc],
@@ -44,6 +36,13 @@ def tick_main_menu(args)
     button
   end
   recipe_buttons.each { |rb| rb[:tick].call(args, rb) }
+  args.outputs.sprites << {
+    x: args.grid.w / 2 - 192,
+    y: args.grid.top - 200,
+    w: 385,
+    h: 217,
+    path: "sprites/logo.png"
+  }
   args.outputs.primitives << recipe_buttons.map { |rb| button_for_render(rb) }
 end
 
