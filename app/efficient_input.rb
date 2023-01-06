@@ -25,7 +25,7 @@ def tick_efficient_input(args)
   }
   labels << {
     x: args.grid.w / 2, y: args.grid.top - 240,
-    text: "Press Z, J, Enter, Space, or Gamepad A for primary input",
+    text: "Press Z, J, Enter, Space, or Gamepad A to confirm",
     size_enum: 4, alignment_enum: 1,
   }
   labels.concat(args.state.confirmations.reverse.map.with_index do |c, i|
