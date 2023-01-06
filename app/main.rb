@@ -1,3 +1,4 @@
+require "app/efficient_input.rb"
 require "app/music.rb"
 require "app/spritesheet.rb"
 
@@ -13,6 +14,11 @@ RECIPES = [
     name: "Music",
     desc: "Play looping audio",
     key: :music,
+  },
+  {
+    name: "Efficient Input",
+    desc: "Check many keys &\ncontrollers",
+    key: :efficient_input,
   }
 ]
 
@@ -71,12 +77,14 @@ def button(x:, y:, w:, h:, key:, title:, desc: nil, on_click:)
   }
 
   if desc
-    butt[:desc] = {
-      x: x + 20,
-      y: y - 60,
-      text: desc,
-      size_enum: 0,
-    }.label!
+    butt[:desc] = desc.split("\n").map.with_index do |d, i|
+      {
+        x: x + 20,
+        y: y - 60 - i * 20,
+        text: d,
+        size_enum: 0,
+      }.label!
+    end
   end
 
   butt[:on_click] = on_click
