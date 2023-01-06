@@ -25,7 +25,7 @@ def tick_efficient_input(args)
   }
   labels << {
     x: args.grid.w / 2, y: args.grid.top - 240,
-    text: "Press Z, J, Enter, or Space for primary input",
+    text: "Press Z, J, Enter, Space, or Gamepad A for primary input",
     size_enum: 4, alignment_enum: 1,
   }
   labels.concat(args.state.confirmations.reverse.map.with_index do |c, i|
@@ -45,6 +45,6 @@ end
 
 CONFIRM_KEYS = [:j, :z, :enter, :space]
 def confirm?(inputs)
-  inputs.controller_one.key_down&.a ||
-    (CONFIRM_KEYS & inputs.keyboard.keys[:down]).any?
+  CONFIRM_KEYS.any? { |k| inputs.keyboard.key_down.send(k) } ||
+    (inputs.controller_one.connected && inputs.controller_one.key_down.a)
 end
