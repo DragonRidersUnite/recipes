@@ -1,4 +1,6 @@
-# This sample shows how to use tile_x, tile_y, tile_w, and tile_h to
+# RECIPE: Spritesheet
+#
+# This recipe shows how to use tile_x, tile_y, tile_w, and tile_h to
 # selectively render what's in an image. Useful for images that contain
 # multiple tiles and animations.
 def tick_spritesheet(args)
@@ -43,37 +45,51 @@ def tick_spritesheet(args)
     h: 128,
   }
 
-  args.outputs.labels  << {
+  # this is just label stuff for the demo
+  labels = []
+  labels << {
+    x: args.grid.w / 2, y: args.grid.top - 60,
+    text: "Spritesheet",
+    size_enum: 10, alignment_enum: 1
+  }
+  labels << {
+    x: args.grid.w / 2,
+    y: 340,
+    text: 'only a segment of the image is rendered',
+    size_enum: 0,
+    alignment_enum: 1
+  }
+  labels << {
+    x: args.grid.w / 2,
+    y: 260,
+    text: 'press [SPACE] to change tile',
+    size_enum: 2,
+    alignment_enum: 1
+  }
+  labels  << {
     x: args.grid.w / 2,
     y: 220,
-    text: 'press [SPACE] to change tile',
-    size_enum: 5,
+    text: 'press A to toggle animation',
+    size_enum: 2,
     alignment_enum: 1
   }
-  args.outputs.labels  << {
+  labels  << {
     x: args.grid.w / 2,
     y: 160,
-    text: 'press A to toggle animation',
-    size_enum: 5,
-    alignment_enum: 1
-  }
-  args.outputs.labels  << {
-    x: args.grid.w / 2,
-    y: 80,
     text: "tile index: #{args.state.tile_i} | animating: #{args.state.animating}",
-    size_enum: 5,
+    size_enum: 2,
     alignment_enum: 1
   }
-
-  args.outputs.labels  << {
-    x: args.grid.left + 40,
-    y: args.grid.top - 120,
+  labels  << {
+    x: args.grid.left + 140,
+    y: args.grid.top - 330,
     text: "original image at 4x"
   }
+  args.outputs.labels << labels
   args.outputs.sprites << {
     path: 'sprites/spritesheet.png',
-    x: args.grid.left + 100,
-    y: args.grid.top - 92,
+    x: args.grid.left + 200,
+    y: args.grid.top - 300,
     w: 64,
     h: 64,
   }
