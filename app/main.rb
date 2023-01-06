@@ -17,7 +17,7 @@ RECIPES = [
   },
   {
     name: "Efficient Input",
-    desc: "Check many keys &\ncontrollers",
+    desc: "Check many keys &\ncontroller input at once",
     key: :efficient_input,
   }
 ]
