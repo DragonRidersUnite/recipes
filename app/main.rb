@@ -1,4 +1,5 @@
 require "app/efficient_input.rb"
+require "app/menu.rb"
 require "app/music.rb"
 require "app/spritesheet.rb"
 
@@ -19,7 +20,12 @@ RECIPES = [
     name: "Efficient Input",
     desc: "Check many keys &\ncontroller input at once",
     key: :efficient_input,
-  }
+  },
+  {
+    name: "Menu",
+    desc: "Navigable and selectable\noptions",
+    key: :menu,
+  },
 ]
 
 def tick(args)
@@ -30,10 +36,12 @@ end
 def tick_main_menu(args)
   recipe_buttons = []
   recipe_buttons = RECIPES.map.with_index do |r, i|
+    col = (i % 3).to_i
+    row = (i / 3).to_i
     w = 310
     h = 120
-    x = args.grid.left + 80 + (i * w)
-    y = args.grid.top - 200
+    x = args.grid.left + 180 + ((col) * w)
+    y = args.grid.top - 200 - ((row) * (h + 20))
     button = button(
       x: x, y: y, w: w, h: h,
       key: r[:key], title: r[:name], desc: r[:desc],
