@@ -30,8 +30,8 @@ end
 def tick_main_menu(args)
   recipe_buttons = []
   recipe_buttons = RECIPES.map.with_index do |r, i|
-    w = 320
-    h = 240
+    w = 310
+    h = 120
     x = args.grid.left + 80 + (i * w)
     y = args.grid.top - 200
     button = button(
