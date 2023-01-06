@@ -4,6 +4,8 @@
 
 Interactive source for many of [the recipes found on DragonRiders.community](https://www.dragonriders.community/recipes).
 
+🎮 [Play it!](https://dragonridersunite.itch.io/recipes)
+
 ## License
 
 This work is dedicated to the Public Domain.
