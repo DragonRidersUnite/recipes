@@ -3,7 +3,7 @@ devid=dragonridersunite
 devtitle=Dragon Riders Community
 gameid=recipes
 gametitle=Recipes
-version=0.3
+version=0.4
 icon=metadata/icon.png
 
 # === Flags available at all licensing tiers ===
