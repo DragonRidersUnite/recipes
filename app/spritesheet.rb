@@ -7,9 +7,9 @@ def tick_spritesheet(args)
   args.state.tile_i ||= 0
   args.state.animating ||= false
 
-  # the spritesheet image is a 2x2 grid of squares, so we map out each one
+  # the spritesheet image is a 8x8 grid of squares, so we map out each one
   # you could write code to automate this if you wanted, but being explcit
-  # can be nice
+  # is nice for this recipe
   tiles = {
     0 => { x: 0, y: 0, w: 8, h: 8 },
     1 => { x: 0, y: 8, w: 8, h: 8 },
