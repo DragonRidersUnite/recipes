@@ -43,7 +43,7 @@ def tick_menu(args)
   }
   labels << {
     x: args.grid.w / 2, y: args.grid.top - 180,
-    text: "Navigate with Arrows / Select option with Z or Space", size_enum: 4, alignment_enum: 1
+    text: "Navigate with Arrows | Select option with Z or Space", size_enum: 4, alignment_enum: 1
   }
   labels << {
     x: args.grid.w / 2, y: args.grid.top - 260,
