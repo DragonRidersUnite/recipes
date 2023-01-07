@@ -22,13 +22,21 @@ def tick_spritesheet(args)
   end
 
   # here we handle changing the tile index by various means
-  if args.inputs.keyboard.key_down.space || (args.state.animating && args.state.tick_count % 16 == 0)
-    args.state.tile_i += 1
-
-    if args.state.tile_i >= tiles.length
-      args.state.tile_i = 0
-    end
+  if args.state.animating && args.state.tick_count % 16 == 0
+    next_tile(args, tiles)
   end
+
+  controls = []
+  controls << button(
+    x: args.grid.w / 2 - 40 - 160, y: args.grid.top - 460, w: 250, h: 60,
+    key: :animate, title: args.state.animating ? "Stop Animating" : "Start Animating",
+    on_click: -> (args) { args.state.animating = !args.state.animating }
+  )
+  controls << button(
+    x: args.grid.w / 2 - 40 + 100, y: args.grid.top - 460, w: 200, h: 60,
+    key: :next_tile, title: "Next Tile",
+    on_click: -> (args) { next_tile(args, tiles) }
+  )
 
   tile = tiles[args.state.tile_i]
 
@@ -59,20 +67,6 @@ def tick_spritesheet(args)
     size_enum: 0,
     alignment_enum: 1
   }
-  labels << {
-    x: args.grid.w / 2,
-    y: 260,
-    text: 'press [SPACE] to change tile',
-    size_enum: 2,
-    alignment_enum: 1
-  }
-  labels  << {
-    x: args.grid.w / 2,
-    y: 220,
-    text: 'press A to toggle animation',
-    size_enum: 2,
-    alignment_enum: 1
-  }
   labels  << {
     x: args.grid.w / 2,
     y: 160,
@@ -94,10 +88,21 @@ def tick_spritesheet(args)
     h: 64,
   }
 
+  controls.each { |c| c[:tick].call(args, c) }
+  args.outputs.primitives << controls.map { |c| button_for_render(c) }
+
   # ignore this, part of the recipes interactive code!
   back_button(args: args, clean_up: -> (args) do
     args.state.tile_i = nil
     args.state.animating = nil
   end)
   src_button(args: args)
+end
+
+def next_tile(args, tiles)
+  args.state.tile_i += 1
+
+  if args.state.tile_i >= tiles.length
+    args.state.tile_i = 0
+  end
 end
