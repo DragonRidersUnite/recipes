@@ -3,6 +3,8 @@
 # This recipe shows how to use tile_x, tile_y, tile_w, and tile_h to
 # selectively render what's in an image. Useful for images that contain
 # multiple tiles and animations.
+#
+# Read the written recipe: https://www.dragonriders.community/recipes/spritesheet
 def tick_spritesheet(args)
   args.state.tile_i ||= 0
   args.state.animating ||= false
