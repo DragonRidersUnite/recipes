@@ -5,9 +5,9 @@
 #
 # Read tutorial: https://www.dragonriders.community/recipes/music
 def tick_music(args)
-  # only start if not present
+  # only set the music if not set already
   unless args.audio[:music]
-    args.audio[:music] = { input: "sounds/night.ogg", looping: true, paused: false }
+    args.audio[:music] = { input: "sounds/night.ogg", looping: true, paused: true }
   else
     controls = []
     # NOTE: #button comes from this recipes codebase, not DragonRuby GTK
