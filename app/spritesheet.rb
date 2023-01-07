@@ -12,8 +12,8 @@ def tick_spritesheet(args)
   # is nice for this recipe
   tiles = {
     0 => { x: 0, y: 0, w: 8, h: 8 },
-    1 => { x: 0, y: 8, w: 8, h: 8 },
-    2 => { x: 8, y: 0, w: 8, h: 8 },
+    1 => { x: 8, y: 0, w: 8, h: 8 },
+    2 => { x: 0, y: 8, w: 8, h: 8 },
     3 => { x: 8, y: 8, w: 8, h: 8 },
   }
 
